@@ -4,7 +4,17 @@
 
 FluorDetect AI 是一个基于浏览器的专业水质分析工具，利用三维荧光激发-发射矩阵（EEM）光谱技术结合机器学习算法（PCA + KNN），实现对工业废水的快速分类与浓度预测。
 
-![App Screenshot](https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000)
+## 界面预览 (Screenshots)
+
+### 1. 模型训练工作台 (Model Training)
+展示数据导入、PCA 特征空间聚类分析及 EEM 荧光图谱可视化。
+
+![Model Training](./screenshots/training.png)
+
+### 2. 水样检测界面 (Water Detection)
+展示未知水样上传、KNN 最近邻匹配分析及详细的预测报告。
+
+![Water Detection](./screenshots/detection.png)
 
 ## 核心功能 (Features)
 
