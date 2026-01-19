@@ -402,8 +402,8 @@ export default function App() {
   return (
     <div className="flex h-screen bg-slate-50 text-slate-900 font-sans overflow-hidden">
       
-      {/* Sidebar */}
-      <aside className="w-64 bg-slate-900 text-slate-300 flex flex-col shrink-0 z-20 shadow-xl">
+      {/* Sidebar - Fixed Height */}
+      <aside className="w-64 bg-slate-900 text-slate-300 flex flex-col shrink-0 z-20 shadow-xl h-full">
         <div className="p-6 border-b border-slate-700">
           <h1 className="text-xl font-bold text-white flex items-center gap-2">
             <BrainCircuit className="text-cyan-400" />
@@ -429,10 +429,14 @@ export default function App() {
         </div>
       </aside>
 
-      <main className="flex-1 flex flex-col h-full overflow-hidden relative">
+      {/* Main Content - Scrollable if needed */}
+      <main className="flex-1 flex flex-col h-full overflow-y-auto relative bg-slate-50">
+        
         {/* VIEW: TRAINING */}
         {currentView === AppView.TRAINING && (
-          <div className="flex-1 flex flex-col p-6 gap-6 h-full overflow-hidden">
+          // min-w-[1100px] ensures the grid doesn't collapse too much horizontally
+          // min-h-[800px] ensures the vertical layout has enough room for charts + table
+          <div className="flex flex-col p-6 gap-6 min-w-[1100px] min-h-[800px] h-full">
             {/* Header Area */}
             <header className="flex flex-wrap justify-between items-center gap-4 shrink-0 bg-white p-4 rounded-xl shadow-sm border border-slate-200">
               <div className="flex flex-col gap-1">
@@ -504,9 +508,9 @@ export default function App() {
               </div>
             </header>
 
-            <div className="flex-1 grid grid-cols-12 gap-6 overflow-hidden">
+            <div className="grid grid-cols-12 gap-6 flex-1">
               {/* Import & List */}
-              <div className="col-span-3 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+              <div className="col-span-3 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden h-full min-h-[600px]">
                 <div className="p-4 bg-slate-50 border-b border-slate-100">
                     <div className="flex justify-between items-center mb-3">
                         <h3 className="font-semibold text-slate-700 flex items-center gap-2 text-sm">
@@ -574,7 +578,7 @@ export default function App() {
               </div>
 
               {/* Charts & Table */}
-              <div className="col-span-9 flex flex-col gap-6 overflow-hidden h-full">
+              <div className="col-span-9 flex flex-col gap-6 h-full">
                 <div className="h-[380px] grid grid-cols-2 gap-6 shrink-0">
                     {/* PCA Chart Section */}
                     <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col">
@@ -645,7 +649,7 @@ export default function App() {
                 </div>
 
                 {/* Features Table */}
-                <div className="flex-1 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden min-h-0">
+                <div className="flex-1 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden min-h-[350px]">
                     <div className="p-3 px-4 border-b border-slate-100 bg-slate-50 shrink-0">
                         <h3 className="font-semibold text-slate-700 text-sm">训练集特征详情</h3>
                     </div>
@@ -692,7 +696,7 @@ export default function App() {
 
         {/* VIEW: DETECTION */}
         {currentView === AppView.DETECTION && (
-          <div className="flex-1 flex flex-col p-6 gap-6 h-full overflow-hidden">
+          <div className="flex flex-col p-6 gap-6 min-w-[1100px] min-h-[800px] h-full">
              
              {/* DETECTION HEADER */}
              <header className="flex justify-between items-center shrink-0">
@@ -728,9 +732,9 @@ export default function App() {
                 </div>
              </header>
 
-             <div className="flex-1 grid grid-cols-12 gap-6 overflow-hidden">
+             <div className="grid grid-cols-12 gap-6 flex-1">
                 {/* Upload List (Left) */}
-                <div className="col-span-3 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+                <div className="col-span-3 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden h-full min-h-[600px]">
                     <div className="p-4 bg-slate-50 border-b border-slate-100">
                         <div className="flex justify-between items-center mb-3">
                             <h3 className="font-semibold text-slate-700 flex items-center gap-2 text-sm">
@@ -776,7 +780,7 @@ export default function App() {
                     </div>
                 </div>
 
-                <div className="col-span-9 flex flex-col gap-4 overflow-hidden h-full">
+                <div className="col-span-9 flex flex-col gap-4 h-full">
                     {/* Top Section: Detailed Analysis - UPDATED LAYOUT */}
                     <div className="h-[380px] shrink-0 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden"> 
                         {/* New Header Bar for Specific Details */}
@@ -836,7 +840,7 @@ export default function App() {
                     </div>
 
                     {/* Bottom Section: Batch Results Table - UPDATED VISUALS WITH EMPTY STATE */}
-                    <div className="flex-1 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col min-h-0">
+                    <div className="flex-1 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col min-h-[350px]">
                         <div className="px-6 py-3 border-b border-slate-100 bg-slate-50 flex justify-between items-center shrink-0">
                             <h3 className="font-semibold text-slate-700 text-sm flex items-center gap-2"><Layers size={16} className="text-blue-600"/> 批量检测结果 {predictions.length > 0 && `(${predictions.length})`}</h3>
                             <button 
