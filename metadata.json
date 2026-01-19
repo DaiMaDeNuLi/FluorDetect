@@ -1,0 +1,5 @@
+{
+  "name": "FluorDetect Analyst",
+  "description": "Industrial wastewater EEM feature extraction and classification tool.",
+  "requestFramePermissions": []
+}
