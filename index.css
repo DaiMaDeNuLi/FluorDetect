@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* @tailwind directives are removed because we are using the CDN script in index.html. 
+   Keeping them in a raw CSS file without a build step serves no purpose and can be cleaner without them. */
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -17,4 +16,24 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #f8fafc; /* slate-50 */
+}
+
+/* Custom Scrollbar Styling for Webkit (Chrome/Safari/Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1; /* slate-300 */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8; /* slate-400 */
 }
