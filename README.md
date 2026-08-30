@@ -3,6 +3,7 @@
 **工业废水荧光指纹分析溯源平台 (Industrial Wastewater EEM Analysis Platform)**
 
 FluorDetect AI 是一个基于浏览器的专业水质分析工具，利用三维荧光激发-发射矩阵（EEM）光谱技术结合机器学习算法（PCA + KNN），实现对工业废水的快速分类与浓度预测。
+访问地址：https://whimsical-dragon-3f6670.netlify.app/
 
 ## 界面预览 (Screenshots)
 
